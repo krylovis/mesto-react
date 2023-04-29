@@ -1,4 +1,4 @@
-function Main() {
+export default function Main() {
   function handleEditAvatarClick() {
     const popup = document.querySelector('.popup_type_new-avatar');
     popup.classList.add('popup_opened');
@@ -123,5 +123,3 @@ function Main() {
     </>
   );
 }
-
-export default Main;
