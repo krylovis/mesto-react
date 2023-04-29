@@ -75,7 +75,7 @@ function Main() {
         <div className="popup__container">
           <h2 className="popup__title">Вы уверены?</h2>
 
-          <form action="deleteСonfirmationAction" name="deleteСonfirmation" className="popup__form popup__form_type_delete-confirmation">
+          <form action="deleteConfirmationAction" name="deleteConfirmation" className="popup__form popup__form_type_delete-confirmation">
             <button className="button popup__submit-button" type="submit"
               aria-label="Создать место">Да</button>
           </form>
