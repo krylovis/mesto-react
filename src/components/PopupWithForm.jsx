@@ -1,5 +1,5 @@
 export default function PopupWithForm(props) {
-  const { popupClass, isOpen, popupTitle, formName, inactiveButton, ariaLabel, buttonText, children } = props;
+  const { popupClass, isOpen, onClose, popupTitle, formName, inactiveButton, ariaLabel, buttonText, children } = props;
   return (
     <>
       <section className={`popup popup_type_${popupClass} ${isOpen ? "popup_opened" : ''}`}>
@@ -11,7 +11,7 @@ export default function PopupWithForm(props) {
             <button className={`button popup__submit-button ${inactiveButton ? "popup__submit-button_inactive" : ''}`} type="submit" aria-label={ariaLabel}>{buttonText}</button>
           </form>
 
-          <button className="button popup__close-button" type="button" aria-label="Закрыть форму"></button>
+          <button className="button popup__close-button" type="button" aria-label="Закрыть форму" onClick={onClose}></button>
         </div>
       </section >
     </>

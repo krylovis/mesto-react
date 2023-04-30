@@ -1,16 +1,17 @@
 import PopupWithForm from './PopupWithForm';
 
 export default function PopupNewAvatar(props) {
-  const { isOpen } = props;
+  const { isOpen, onClose } = props;
   return (
     <PopupWithForm
-      popupClass="new-avatar"
       isOpen={isOpen}
+      onClose={onClose}
+      popupClass="new-avatar"
       popupTitle="Обновить аватар"
       formName="newAvatarForm"
-      inactiveButton={false}
       ariaLabel="Сохранить аватар"
       buttonText="Сохранить"
+      inactiveButton={false}
     >
       <label className="popup__label" htmlFor="inputNewAvatar">
         <input className="popup__input" id="inputNewAvatar" type="url" name="link" placeholder="Ссылка на картинку" required pattern="https://.*" />

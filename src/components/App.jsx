@@ -15,9 +15,15 @@ export default function App() {
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
 
-  function handleEditAvatarClick() { setEditAvatarPopupOpen(!isEditAvatarPopupOpen) };
-  function handleEditProfileClick() { setEditProfilePopupOpen(!isEditProfilePopupOpen) };
-  function handleAddPlaceClick() { setAddPlacePopupOpen(!isAddPlacePopupOpen) };
+  const handleEditAvatarClick = () => setEditAvatarPopupOpen(!isEditAvatarPopupOpen);
+  const handleEditProfileClick = () => setEditProfilePopupOpen(!isEditProfilePopupOpen);
+  const handleAddPlaceClick = () => setAddPlacePopupOpen(!isAddPlacePopupOpen);
+
+  const closeAllPopups = () => {
+    setEditAvatarPopupOpen(false);
+    setEditProfilePopupOpen(false);
+    setAddPlacePopupOpen(false);
+  };
 
   return (
     <>
@@ -29,9 +35,9 @@ export default function App() {
       />
       <Footer />
 
-      <PopupProfileForm isOpen={isEditProfilePopupOpen} />
-      <PopupNewPlace isOpen={isAddPlacePopupOpen} />
-      <PopupNewAvatar isOpen={isEditAvatarPopupOpen} />
+      <PopupProfileForm isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} />
+      <PopupNewPlace isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
+      <PopupNewAvatar isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} />
       <PopupDeleteConfirmation />
       <PopupPlacePhoto />
 

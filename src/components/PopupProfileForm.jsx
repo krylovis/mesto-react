@@ -1,17 +1,18 @@
 import PopupWithForm from './PopupWithForm';
 
 export default function PopupProfileForm(props) {
-  const { isOpen } = props;
+  const { isOpen, onClose } = props;
 
   return (
     <PopupWithForm
-      popupClass="profile-form"
       isOpen={isOpen}
+      onClose={onClose}
+      popupClass="profile-form"
       popupTitle="Редактировать профиль"
       formName="profileForm"
-      inactiveButton={false}
       ariaLabel="Сохранить данные"
       buttonText="Сохранить"
+      inactiveButton={false}
     >
       <label className="popup__label" htmlFor="inputName">
         <input className="popup__input" id="inputName" type="text" name="userName" placeholder="ФИО" required minLength="2" maxLength="40" />
