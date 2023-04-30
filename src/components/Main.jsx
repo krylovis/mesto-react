@@ -1,12 +1,12 @@
 export default function Main(props) {
-  const { onEditProfile, isAddPlacePopupOpen, isEditAvatarPopupOpen } = props;
+  const { onEditProfile, onAddPlace, onEditAvatar } = props;
 
   return (
     <>
       <main className="content">
 
         <section className="profile">
-          <button className="profile__edit-avatar-button" type="button" aria-label="Редактировать Аватар" onClick={isEditAvatarPopupOpen}>
+          <button className="profile__edit-avatar-button" type="button" aria-label="Редактировать Аватар" onClick={onEditAvatar}>
             <img alt="Аватар" className="profile__avatar" />
           </button>
 
@@ -18,7 +18,7 @@ export default function Main(props) {
             <p className="profile__subtitle"></p>
           </div>
 
-          <button className="button profile__add-button" type="button" aria-label="Добавить место" onClick={isAddPlacePopupOpen}></button>
+          <button className="button profile__add-button" type="button" aria-label="Добавить место" onClick={onAddPlace}></button>
         </section>
 
         <section className="elements"></section>

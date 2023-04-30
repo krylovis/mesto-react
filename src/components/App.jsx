@@ -33,8 +33,8 @@ export default function App() {
       <Header />
       <Main
         onEditProfile={handleEditProfileClick}
-        isAddPlacePopupOpen={handleAddPlaceClick}
-        isEditAvatarPopupOpen={handleEditAvatarClick}
+        onEditAvatar={handleEditAvatarClick}
+        onAddPlace={handleAddPlaceClick}
       />
       <Footer />
 
