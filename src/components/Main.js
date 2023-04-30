@@ -1,3 +1,5 @@
+import PopupNewPlace from './PopupNewPlace.js';
+
 export default function Main() {
   function handleEditAvatarClick() {
     const popup = document.querySelector('.popup_type_new-avatar');
@@ -60,26 +62,7 @@ export default function Main() {
           </div>
         </section>
 
-        <section className="popup popup_type_new-place">
-          <div className="popup__container">
-            <h2 className="popup__title">Новое место</h2>
-
-            <form action="newPlaceFormAction" name="newPlaceForm" className="popup__form">
-              <label className="popup__label" htmlFor="inputPlaceName">
-                <input className="popup__input" id="inputPlaceName" type="text" name="name" placeholder="Название" required minLength="2" maxLength="30" />
-                <span className="popup__input-error inputPlaceName-error"></span>
-              </label>
-              <label className="popup__label" htmlFor="inputPlaceLink">
-                <input className="popup__input" id="inputPlaceLink" type="url" name="link" placeholder="Ссылка на картинку" required pattern="https://.*" />
-                <span className="popup__input-error inputPlaceLink-error"></span>
-              </label>
-              <button className="button popup__submit-button popup__submit-button_inactive" type="submit"
-                aria-label="Создать место">Создать</button>
-            </form>
-
-            <button className="button popup__close-button" type="button" aria-label="Закрыть форму"></button>
-          </div>
-        </section>
+        <PopupNewPlace />
 
         <section className="popup popup_type_place-photo">
           <figure className="popup__container popup__container_type_place-photo">
