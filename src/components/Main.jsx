@@ -1,4 +1,4 @@
-import PopupNewPlace from './PopupNewPlace.js';
+import PopupNewPlace from './PopupNewPlace';
 
 export default function Main() {
   function handleEditAvatarClick() {

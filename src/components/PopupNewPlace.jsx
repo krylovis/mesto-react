@@ -1,4 +1,4 @@
-import PopupWithForm from './PopupWithForm.js';
+import PopupWithForm from './PopupWithForm';
 
 export default function PopupNewPlace() {
   return (
