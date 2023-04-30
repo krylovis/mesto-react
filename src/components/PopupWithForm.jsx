@@ -8,7 +8,7 @@ export default function PopupWithForm(props) {
 
           <form action={`${formName}Action`} name={formName} className="popup__form">
             {children}
-            <button className={`button popup__submit-button ${{ "popup__submit-button_inactive": inactiveButton }}`} type="submit" aria-label={ariaLabel}>{buttonText}</button>
+            <button className={`button popup__submit-button ${inactiveButton ? "popup__submit-button_inactive" : ''}`} type="submit" aria-label={ariaLabel}>{buttonText}</button>
           </form>
 
           <button className="button popup__close-button" type="button" aria-label="Закрыть форму"></button>
