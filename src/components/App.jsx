@@ -15,17 +15,9 @@ export default function App() {
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
 
-  function handleEditAvatarClick() {
-    setEditAvatarPopupOpen(!isEditAvatarPopupOpen);
-  };
-
-  function handleEditProfileClick() {
-    setEditProfilePopupOpen(!isEditProfilePopupOpen);
-  };
-
-  function handleAddPlaceClick() {
-    setAddPlacePopupOpen(!isAddPlacePopupOpen);
-  };
+  function handleEditAvatarClick() { setEditAvatarPopupOpen(!isEditAvatarPopupOpen) };
+  function handleEditProfileClick() { setEditProfilePopupOpen(!isEditProfilePopupOpen) };
+  function handleAddPlaceClick() { setAddPlacePopupOpen(!isAddPlacePopupOpen) };
 
   return (
     <>
