@@ -1,4 +1,5 @@
 import PopupNewPlace from './PopupNewPlace';
+import PopupProfileForm from './PopupProfileForm';
 
 export default function Main() {
   function handleEditAvatarClick() {
@@ -41,27 +42,7 @@ export default function Main() {
 
         </section>
 
-        <section className="popup popup_type_profile-form">
-          <div className="popup__container">
-            <h2 className="popup__title">Редактировать профиль</h2>
-
-            <form action="profileFormAction" name="profileForm" className="popup__form">
-              <label className="popup__label" htmlFor="inputName">
-                <input className="popup__input" id="inputName" type="text" name="userName" placeholder="ФИО" required minLength="2" maxLength="40" />
-                <span className="popup__input-error inputName-error"></span>
-              </label>
-              <label className="popup__label" htmlFor="inputJob">
-                <input className="popup__input" id="inputJob" type="text" name="job" placeholder="Профессия" required minLength="2" maxLength="200" />
-                <span className="popup__input-error inputJob-error"></span>
-              </label>
-              <button className="button popup__submit-button popup__submit-button_inactive" type="submit"
-                aria-label="Сохранить данные">Сохранить</button>
-            </form>
-
-            <button className="button popup__close-button" type="button" aria-label="Закрыть форму"></button>
-          </div>
-        </section>
-
+        <PopupProfileForm />
         <PopupNewPlace />
 
         <section className="popup popup_type_place-photo">
