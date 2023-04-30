@@ -1,6 +1,7 @@
 import PopupNewPlace from './PopupNewPlace';
 import PopupProfileForm from './PopupProfileForm';
 import PopupNewAvatar from './PopupNewAvatar';
+import PopupDeleteConfirmation from './PopupDeleteConfirmation';
 
 export default function Main() {
   function handleEditAvatarClick() {
@@ -46,6 +47,7 @@ export default function Main() {
         <PopupProfileForm />
         <PopupNewPlace />
         <PopupNewAvatar />
+        <PopupDeleteConfirmation />
 
         <section className="popup popup_type_place-photo">
           <figure className="popup__container popup__container_type_place-photo">
@@ -53,19 +55,6 @@ export default function Main() {
             <figcaption className="popup__figcaption"></figcaption>
             <button className="button popup__close-button" type="button" aria-label="Закрыть форму"></button>
           </figure>
-        </section>
-
-        <section className="popup popup_type_delete-confirmation">
-          <div className="popup__container">
-            <h2 className="popup__title">Вы уверены?</h2>
-
-            <form action="deleteConfirmationAction" name="deleteConfirmation" className="popup__form popup__form_type_delete-confirmation">
-              <button className="button popup__submit-button" type="submit"
-                aria-label="Создать место">Да</button>
-            </form>
-
-            <button className="button popup__close-button" type="button" aria-label="Закрыть форму"></button>
-          </div>
         </section>
 
       </main>
