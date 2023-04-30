@@ -1,10 +1,12 @@
 import PopupWithForm from './PopupWithForm';
 
-export default function PopupNewPlace() {
+export default function PopupNewPlace(props) {
+  const { isOpen } = props;
+
   return (
     <PopupWithForm
       popupClass="new-place"
-      isOpened={false}
+      isOpen={isOpen}
       popupTitle="Новое место"
       formName="newPlaceForm"
       inactiveButton={false}

@@ -1,10 +1,11 @@
 import PopupWithForm from './PopupWithForm';
 
-export default function PopupNewAvatar() {
+export default function PopupNewAvatar(props) {
+  const { isOpen } = props;
   return (
     <PopupWithForm
       popupClass="new-avatar"
-      isOpened={false}
+      isOpen={isOpen}
       popupTitle="Обновить аватар"
       formName="newAvatarForm"
       inactiveButton={false}

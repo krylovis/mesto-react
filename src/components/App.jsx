@@ -1,3 +1,5 @@
+import React from 'react';
+
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
@@ -9,23 +11,20 @@ import PopupDeleteConfirmation from './PopupDeleteConfirmation';
 import PopupPlacePhoto from './PopupPlacePhoto';
 
 export default function App() {
+  const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
+  const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
+  const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
 
   function handleEditAvatarClick() {
-    const popup = document.querySelector('.popup_type_new-avatar');
-    popup.classList.add('popup_opened');
-    console.log('handleEditAvatarClick');
+    setEditAvatarPopupOpen(!isEditAvatarPopupOpen);
   };
 
   function handleEditProfileClick() {
-    const popup = document.querySelector('.popup_type_profile-form');
-    popup.classList.add('popup_opened');
-    console.log('handleEditProfileClick');
+    setEditProfilePopupOpen(!isEditProfilePopupOpen);
   };
 
   function handleAddPlaceClick() {
-    const popup = document.querySelector('.popup_type_new-place');
-    popup.classList.add('popup_opened');
-    console.log('handleAddPlaceClick');
+    setAddPlacePopupOpen(!isAddPlacePopupOpen);
   };
 
   return (
@@ -38,9 +37,9 @@ export default function App() {
       />
       <Footer />
 
-      <PopupProfileForm />
-      <PopupNewPlace />
-      <PopupNewAvatar />
+      <PopupProfileForm isOpen={isEditProfilePopupOpen} />
+      <PopupNewPlace isOpen={isAddPlacePopupOpen} />
+      <PopupNewAvatar isOpen={isEditAvatarPopupOpen} />
       <PopupDeleteConfirmation />
       <PopupPlacePhoto />
 

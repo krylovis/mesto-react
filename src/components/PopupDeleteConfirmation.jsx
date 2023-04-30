@@ -4,7 +4,7 @@ export default function PopupDeleteConfirmation() {
   return (
     <PopupWithForm
       popupClass="delete-confirmation"
-      isOpened={false}
+      isOpen={false}
       popupTitle="Вы уверены?"
       formName="deleteConfirmation"
       inactiveButton={false}

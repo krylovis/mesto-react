@@ -1,10 +1,12 @@
 import PopupWithForm from './PopupWithForm';
 
-export default function PopupProfileForm() {
+export default function PopupProfileForm(props) {
+  const { isOpen } = props;
+
   return (
     <PopupWithForm
       popupClass="profile-form"
-      isOpened={false}
+      isOpen={isOpen}
       popupTitle="Редактировать профиль"
       formName="profileForm"
       inactiveButton={false}
