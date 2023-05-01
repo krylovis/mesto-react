@@ -15,7 +15,7 @@ export default function App() {
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
 
-  const [selectedCard, setSelectedCard] = React.useState('');
+  const [selectedCard, setSelectedCard] = React.useState(null);
 
   const handleEditAvatarClick = () => setEditAvatarPopupOpen(!isEditAvatarPopupOpen);
   const handleEditProfileClick = () => setEditProfilePopupOpen(!isEditProfilePopupOpen);
@@ -26,7 +26,7 @@ export default function App() {
     setEditAvatarPopupOpen(false);
     setEditProfilePopupOpen(false);
     setAddPlacePopupOpen(false);
-    setSelectedCard('');
+    setSelectedCard(null);
   };
 
   return (
