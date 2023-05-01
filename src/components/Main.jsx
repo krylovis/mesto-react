@@ -1,5 +1,6 @@
 import React from 'react';
 import { api } from '../utils/Api';
+import Card from './Card';
 
 export default function Main(props) {
   const { onEditProfile, onAddPlace, onEditAvatar } = props;
@@ -7,15 +8,21 @@ export default function Main(props) {
   const [userName, setUserName] = React.useState('');
   const [userDescription, setUserDescription] = React.useState('');
   const [userAvatar, setUserAvatar] = React.useState('');
+  const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
-    api.getUserInfo().then((res) => {
-      const { name, about, avatar } = res;
+    api.getUserInfo().then((data) => {
+      const { name, about, avatar } = data;
       setUserName(name);
       setUserDescription(about);
       setUserAvatar(avatar);
     }).catch(err => console.log(err));
-  });
+  }, []);
+  React.useEffect(() => {
+    api.getCards().then((data) => {
+      setCards(data);
+    }).catch(err => console.log(err));
+  }, []);
 
   return (
     <>
@@ -37,7 +44,11 @@ export default function Main(props) {
           <button className="button profile__add-button" type="button" aria-label="Добавить место" onClick={onAddPlace}></button>
         </section>
 
-        <section className="elements"></section>
+        <section className="elements">
+          {cards.map((card) => (
+            <Card key={card._id} card={card} />
+          ))}
+        </section>
 
       </main>
     </>
