@@ -8,7 +8,7 @@ import PopupNewPlace from './PopupNewPlace';
 import PopupProfileForm from './PopupProfileForm';
 import PopupNewAvatar from './PopupNewAvatar';
 import PopupDeleteConfirmation from './PopupDeleteConfirmation';
-import PopupPlacePhoto from './PopupPlacePhoto';
+import ImagePopup from './ImagePopup';
 
 export default function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
@@ -44,7 +44,7 @@ export default function App() {
       <PopupNewPlace isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
       <PopupNewAvatar isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} />
       <PopupDeleteConfirmation />
-      <PopupPlacePhoto cardImg={selectedCard} onClose={closeAllPopups} />
+      <ImagePopup cardImg={selectedCard} onClose={closeAllPopups} />
     </>
   );
 }

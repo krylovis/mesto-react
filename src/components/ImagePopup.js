@@ -1,4 +1,4 @@
-export default function PopupPlacePhoto(props) {
+export default function ImagePopup(props) {
   const { cardImg, onClose } = props;
   return (
     <>
