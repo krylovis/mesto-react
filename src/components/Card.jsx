@@ -1,12 +1,14 @@
-export default function Card({ card }) {
+export default function Card({ card, onCardClick }) {
   const { link, name, likes } = card;
   const counter = likes.length;
+
+  const handleClick = () => { onCardClick(link); }
 
   return (
     <>
       <div className="element">
         <button className="button element__button element__trash" type="button" aria-label="Удалить место" />
-        <img src={link} alt="Фото" className="element__image" />
+        <img src={link} alt="Фото" className="element__image" onClick={handleClick} />
         <div className="element__container">
           <p className="element__title">{name}</p>
           <div className="element__like-container">

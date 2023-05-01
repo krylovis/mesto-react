@@ -15,14 +15,18 @@ export default function App() {
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
 
+  const [selectedCard, setSelectedCard] = React.useState('');
+
   const handleEditAvatarClick = () => setEditAvatarPopupOpen(!isEditAvatarPopupOpen);
   const handleEditProfileClick = () => setEditProfilePopupOpen(!isEditProfilePopupOpen);
   const handleAddPlaceClick = () => setAddPlacePopupOpen(!isAddPlacePopupOpen);
+  const handleCardClick = (cardImg) => setSelectedCard(cardImg);
 
   const closeAllPopups = () => {
     setEditAvatarPopupOpen(false);
     setEditProfilePopupOpen(false);
     setAddPlacePopupOpen(false);
+    setSelectedCard('');
   };
 
   return (
@@ -32,6 +36,7 @@ export default function App() {
         onEditProfile={handleEditProfileClick}
         onEditAvatar={handleEditAvatarClick}
         onAddPlace={handleAddPlaceClick}
+        onCardClick={handleCardClick}
       />
       <Footer />
 
@@ -39,7 +44,7 @@ export default function App() {
       <PopupNewPlace isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
       <PopupNewAvatar isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} />
       <PopupDeleteConfirmation />
-      <PopupPlacePhoto />
+      <PopupPlacePhoto cardImg={selectedCard} onClose={closeAllPopups} />
     </>
   );
 }
