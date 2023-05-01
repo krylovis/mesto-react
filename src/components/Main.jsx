@@ -18,6 +18,7 @@ export default function Main(props) {
       setUserAvatar(avatar);
     }).catch(err => console.log(err));
   }, []);
+
   React.useEffect(() => {
     api.getCards().then((data) => {
       setCards(data);
