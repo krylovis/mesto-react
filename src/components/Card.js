@@ -2,7 +2,7 @@ export default function Card({ card, onCardClick }) {
   const { link, name, likes } = card;
   const counter = likes.length;
 
-  const handleClick = () => { onCardClick(link); }
+  const handleClick = () => { onCardClick(link, name); }
 
   return (
     <>
