@@ -26,32 +26,30 @@ export default function Main(props) {
   }, []);
 
   return (
-    <>
-      <main className="content">
+    <main className="content">
 
-        <section className="profile">
-          <button className="profile__edit-avatar-button" type="button" aria-label="Редактировать Аватар" onClick={onEditAvatar}>
-            <img src={userAvatar} alt="Аватар" className="profile__avatar" />
-          </button>
+      <section className="profile">
+        <button className="profile__edit-avatar-button" type="button" aria-label="Редактировать Аватар" onClick={onEditAvatar}>
+          <img src={userAvatar} alt="Аватар" className="profile__avatar" />
+        </button>
 
-          <div className="profile__info">
-            <div className="profile__title">
-              <h1 className="profile__name">{userName}</h1>
-              <button className="button profile__edit-button" type="button" aria-label="Редактировать профиль" onClick={onEditProfile}></button>
-            </div>
-            <p className="profile__subtitle">{userDescription}</p>
+        <div className="profile__info">
+          <div className="profile__title">
+            <h1 className="profile__name">{userName}</h1>
+            <button className="button profile__edit-button" type="button" aria-label="Редактировать профиль" onClick={onEditProfile}></button>
           </div>
+          <p className="profile__subtitle">{userDescription}</p>
+        </div>
 
-          <button className="button profile__add-button" type="button" aria-label="Добавить место" onClick={onAddPlace}></button>
-        </section>
+        <button className="button profile__add-button" type="button" aria-label="Добавить место" onClick={onAddPlace}></button>
+      </section>
 
-        <section className="elements">
-          {cards.map((card) => (
-            <Card key={card._id} card={card} onCardClick={onCardClick} />
-          ))}
-        </section>
+      <section className="elements">
+        {cards.map((card) => (
+          <Card key={card._id} card={card} onCardClick={onCardClick} />
+        ))}
+      </section>
 
-      </main>
-    </>
+    </main>
   );
 }
