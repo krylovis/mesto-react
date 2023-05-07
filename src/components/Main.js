@@ -8,7 +8,7 @@ export default function Main(props) {
   const { onEditProfile, onAddPlace, onEditAvatar, onCardClick } = props;
 
   const currentUser = React.useContext(CurrentUserContext);
-  const cards = React.useContext(CardListContext);
+  const cardList = React.useContext(CardListContext);
 
   const { name, about, avatar } = currentUser;
 
@@ -32,7 +32,7 @@ export default function Main(props) {
       </section>
 
       <section className="elements">
-        {cards.map((card) => (
+        {cardList.map((card) => (
           <Card key={card._id} card={card} onCardClick={onCardClick} />
         ))}
       </section>

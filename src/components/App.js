@@ -21,7 +21,7 @@ export default function App() {
 
   const [selectedCard, setSelectedCard] = React.useState({ link: '', name: '' });
   const [currentUser, setCurrentUser] = React.useState({});
-  const [cards, setCards] = React.useState([]);
+  const [cardList, setCardList] = React.useState([]);
 
   const handleEditAvatarClick = () => setEditAvatarPopupOpen(true);
   const handleEditProfileClick = () => setEditProfilePopupOpen(true);
@@ -43,14 +43,14 @@ export default function App() {
 
   React.useEffect(() => {
     api.getCards().then((data) => {
-      setCards(data);
+      setCardList(data);
     }).catch(err => console.log(err));
   }, []);
 
   return (
     <>
       <CurrentUserContext.Provider value={currentUser}>
-        <CardListContext.Provider value={cards}>
+        <CardListContext.Provider value={cardList}>
           <Header />
           <Main
             onEditProfile={handleEditProfileClick}
