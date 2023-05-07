@@ -66,6 +66,11 @@ class Api {
     })
   }
 
+  toggleLike(cardID, isLiked) {
+    if (!isLiked) return this.addLike(cardID);
+    return this.removeLike(cardID);
+  }
+
   editAvatar(body) {
     return this._request(this._baseUrl + '/users/me/avatar', {
       method: 'PATCH',

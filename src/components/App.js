@@ -47,6 +47,13 @@ export default function App() {
     }).catch(err => console.log(err));
   }, []);
 
+  function handleCardLike(card) {
+    const isLiked = card.likes.some(like => like._id === currentUser._id);
+    api.toggleLike(card._id, isLiked).then((newCard) => {
+      setCardList((state) => state.map((oldCard) => oldCard._id === card._id ? newCard : oldCard));
+    });
+  };
+
   return (
     <>
       <CurrentUserContext.Provider value={currentUser}>
@@ -57,6 +64,7 @@ export default function App() {
             onEditAvatar={handleEditAvatarClick}
             onAddPlace={handleAddPlaceClick}
             onCardClick={handleCardClick}
+            onCardLike={handleCardLike}
           />
           <Footer />
 
