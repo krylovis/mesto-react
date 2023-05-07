@@ -50,7 +50,7 @@ export default function App() {
   function handleCardLike(card) {
     const isLiked = card.likes.some(like => like._id === currentUser._id);
     api.toggleLike(card._id, isLiked).then((newCard) => {
-      setCardList((state) => state.map((oldCard) => oldCard._id === card._id ? newCard : oldCard));
+      setCardList((list) => list.map((oldCard) => oldCard._id === card._id ? newCard : oldCard));
     });
   };
 
