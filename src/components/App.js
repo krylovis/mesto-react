@@ -54,6 +54,12 @@ export default function App() {
     });
   };
 
+  function handleCardDelete(card) {
+    api.deleteCard(card._id).then(() => {
+      setCardList((list) => list.filter((item) => item._id !== card._id));
+    });
+  };
+
   return (
     <>
       <CurrentUserContext.Provider value={currentUser}>
@@ -65,6 +71,7 @@ export default function App() {
             onAddPlace={handleAddPlaceClick}
             onCardClick={handleCardClick}
             onCardLike={handleCardLike}
+            onCardDelete={handleCardDelete}
           />
           <Footer />
 
@@ -73,6 +80,7 @@ export default function App() {
           <PopupNewAvatar isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} />
           <PopupDeleteConfirmation />
           <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+
         </CardListContext.Provider>
       </CurrentUserContext.Provider>
     </>

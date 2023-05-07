@@ -5,7 +5,7 @@ import { CardListContext } from '../contexts/CardListContext';
 import Card from './Card';
 
 export default function Main(props) {
-  const { onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCardLike } = props;
+  const { onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCardLike, onCardDelete } = props;
 
   const currentUser = React.useContext(CurrentUserContext);
   const cardList = React.useContext(CardListContext);
@@ -33,7 +33,12 @@ export default function Main(props) {
 
       <section className="elements">
         {cardList.map((card) => (
-          <Card key={card._id} card={card} onCardClick={onCardClick} onCardLike={onCardLike} />
+          <Card key={card._id}
+            card={card}
+            onCardClick={onCardClick}
+            onCardLike={onCardLike}
+            onCardDelete={onCardDelete}
+          />
         ))}
       </section>
 
