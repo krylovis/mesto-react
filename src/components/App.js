@@ -60,6 +60,13 @@ export default function App() {
     });
   };
 
+  function onUpdateUser(userInfo) {
+    api.editUserInfo(userInfo).then((data) => {
+      setCurrentUser(data);
+    }).catch(err => console.log(err));
+    closeAllPopups();
+  };
+
   return (
     <>
       <CurrentUserContext.Provider value={currentUser}>
@@ -75,7 +82,7 @@ export default function App() {
           />
           <Footer />
 
-          <PopupProfileForm isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} />
+          <PopupProfileForm isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={onUpdateUser} />
           <PopupNewPlace isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
           <PopupNewAvatar isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} />
           <PopupDeleteConfirmation />
