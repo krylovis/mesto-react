@@ -2,6 +2,7 @@ import React from 'react';
 import { api } from '../utils/Api';
 
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import { CardListContext } from '../contexts/CardListContext';
 
 import Header from './Header';
 import Main from './Main';
@@ -20,6 +21,7 @@ export default function App() {
 
   const [selectedCard, setSelectedCard] = React.useState({ link: '', name: '' });
   const [currentUser, setCurrentUser] = React.useState({});
+  const [cards, setCards] = React.useState([]);
 
   const handleEditAvatarClick = () => setEditAvatarPopupOpen(true);
   const handleEditProfileClick = () => setEditProfilePopupOpen(true);
@@ -39,23 +41,31 @@ export default function App() {
     }).catch(err => console.log(err));
   }, []);
 
+  React.useEffect(() => {
+    api.getCards().then((data) => {
+      setCards(data);
+    }).catch(err => console.log(err));
+  }, []);
+
   return (
     <>
       <CurrentUserContext.Provider value={currentUser}>
-        <Header />
-        <Main
-          onEditProfile={handleEditProfileClick}
-          onEditAvatar={handleEditAvatarClick}
-          onAddPlace={handleAddPlaceClick}
-          onCardClick={handleCardClick}
-        />
-        <Footer />
+        <CardListContext.Provider value={cards}>
+          <Header />
+          <Main
+            onEditProfile={handleEditProfileClick}
+            onEditAvatar={handleEditAvatarClick}
+            onAddPlace={handleAddPlaceClick}
+            onCardClick={handleCardClick}
+          />
+          <Footer />
 
-        <PopupProfileForm isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} />
-        <PopupNewPlace isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
-        <PopupNewAvatar isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} />
-        <PopupDeleteConfirmation />
-        <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+          <PopupProfileForm isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} />
+          <PopupNewPlace isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
+          <PopupNewAvatar isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} />
+          <PopupDeleteConfirmation />
+          <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+        </CardListContext.Provider>
       </CurrentUserContext.Provider>
     </>
   );

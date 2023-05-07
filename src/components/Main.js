@@ -1,6 +1,6 @@
 import React from 'react';
-import { api } from '../utils/Api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import { CardListContext } from '../contexts/CardListContext';
 
 import Card from './Card';
 
@@ -8,15 +8,9 @@ export default function Main(props) {
   const { onEditProfile, onAddPlace, onEditAvatar, onCardClick } = props;
 
   const currentUser = React.useContext(CurrentUserContext);
+  const cards = React.useContext(CardListContext);
+
   const { name, about, avatar } = currentUser;
-
-  const [cards, setCards] = React.useState([]);
-
-  React.useEffect(() => {
-    api.getCards().then((data) => {
-      setCards(data);
-    }).catch(err => console.log(err));
-  }, []);
 
   return (
     <main className="content">
