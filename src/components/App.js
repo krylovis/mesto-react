@@ -8,7 +8,7 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 
-import PopupNewPlace from './PopupNewPlace';
+import AddPlacePopup from './AddPlacePopup';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
 import PopupDeleteConfirmation from './PopupDeleteConfirmation';
@@ -90,7 +90,7 @@ export default function App() {
           <Footer />
 
           <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={onUpdateUser} />
-          <PopupNewPlace isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
+          <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
           <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={onUpdateAvatar} />
           <PopupDeleteConfirmation />
           <ImagePopup card={selectedCard} onClose={closeAllPopups} />
