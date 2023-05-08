@@ -18,20 +18,24 @@ export default function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
+  const [isDelConfPopupOpen, setDelConfPopupOpen] = React.useState(false);
 
   const [selectedCard, setSelectedCard] = React.useState({ link: '', name: '' });
   const [currentUser, setCurrentUser] = React.useState({});
   const [cardList, setCardList] = React.useState([]);
+  const [cardForDelete, setCardForDelete] = React.useState('');
 
   const handleEditAvatarClick = () => setEditAvatarPopupOpen(true);
   const handleEditProfileClick = () => setEditProfilePopupOpen(true);
   const handleAddPlaceClick = () => setAddPlacePopupOpen(true);
+  const handleDeleteClick = () => setDelConfPopupOpen(true);
   const handleCardClick = (link, name) => setSelectedCard({ link, name });
 
   const closeAllPopups = () => {
     setEditAvatarPopupOpen(false);
     setEditProfilePopupOpen(false);
     setAddPlacePopupOpen(false);
+    setDelConfPopupOpen(false);
     setSelectedCard({ link: '', name: '' });
   };
 
@@ -55,9 +59,19 @@ export default function App() {
   };
 
   function handleCardDelete(card) {
-    api.deleteCard(card._id).then(() => {
-      setCardList((list) => list.filter((item) => item._id !== card._id));
-    });
+    handleDeleteClick();
+    setCardForDelete(card._id);
+  };
+
+  function onConfirmation(value) {
+    if (value && cardForDelete) {
+      api.deleteCard(cardForDelete)
+        .then(() => {
+          setCardList((list) => list.filter((item) => item._id !== cardForDelete));
+          closeAllPopups();
+        })
+        .catch(err => console.log(err));
+    }
   };
 
   function onUpdateUser(userInfo) {
@@ -99,7 +113,7 @@ export default function App() {
           <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={onUpdateUser} />
           <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={onAddPlace} />
           <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={onUpdateAvatar} />
-          <DeleteConfirmationPopup />
+          <DeleteConfirmationPopup isOpen={isDelConfPopupOpen} onClose={closeAllPopups} onConfirmation={onConfirmation} />
           <ImagePopup card={selectedCard} onClose={closeAllPopups} />
 
         </CardListContext.Provider>
