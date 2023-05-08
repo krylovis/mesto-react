@@ -8,11 +8,11 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 
-import AddPlacePopup from './AddPlacePopup';
-import EditProfilePopup from './EditProfilePopup';
-import EditAvatarPopup from './EditAvatarPopup';
-import DeleteConfirmationPopup from './DeleteConfirmationPopup';
-import ImagePopup from './ImagePopup';
+import AddPlacePopup from './popups/AddPlacePopup';
+import EditProfilePopup from './popups/EditProfilePopup';
+import EditAvatarPopup from './popups/EditAvatarPopup';
+import DeleteConfirmationPopup from './popups/DeleteConfirmationPopup';
+import ImagePopup from './popups/ImagePopup';
 
 export default function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
