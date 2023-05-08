@@ -11,7 +11,7 @@ import Footer from './Footer';
 import AddPlacePopup from './AddPlacePopup';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
-import PopupDeleteConfirmation from './PopupDeleteConfirmation';
+import DeleteConfirmationPopup from './DeleteConfirmationPopup';
 import ImagePopup from './ImagePopup';
 
 export default function App() {
@@ -99,7 +99,7 @@ export default function App() {
           <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={onUpdateUser} />
           <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={onAddPlace} />
           <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={onUpdateAvatar} />
-          <PopupDeleteConfirmation />
+          <DeleteConfirmationPopup />
           <ImagePopup card={selectedCard} onClose={closeAllPopups} />
 
         </CardListContext.Provider>

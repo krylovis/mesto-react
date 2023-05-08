@@ -1,6 +1,6 @@
 import PopupWithForm from './PopupWithForm';
 
-export default function PopupDeleteConfirmation() {
+export default function DeleteConfirmationPopup() {
   return (
     <PopupWithForm
       popupClass="delete-confirmation"

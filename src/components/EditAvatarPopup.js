@@ -1,7 +1,7 @@
 import React from 'react';
 import PopupWithForm from './PopupWithForm';
 
-export default function PopupNewAvatar(props) {
+export default function EditAvatarPopup(props) {
   const { isOpen, onClose, onUpdateAvatar } = props;
   const avatarRef = React.useRef();
 
