@@ -74,6 +74,13 @@ export default function App() {
     }).catch(err => console.log(err));
   };
 
+  function onAddPlace(place) {
+    api.addCard(place).then((newCard) => {
+      setCardList([newCard, ...cardList]);
+      closeAllPopups();
+    }).catch(err => console.log(err));
+  };
+
   return (
     <>
       <CurrentUserContext.Provider value={currentUser}>
@@ -90,7 +97,7 @@ export default function App() {
           <Footer />
 
           <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={onUpdateUser} />
-          <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
+          <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={onAddPlace} />
           <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={onUpdateAvatar} />
           <PopupDeleteConfirmation />
           <ImagePopup card={selectedCard} onClose={closeAllPopups} />
