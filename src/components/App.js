@@ -40,22 +40,22 @@ export default function App() {
   };
 
   React.useEffect(() => {
-    api.getUserInfo().then((data) => {
-      setCurrentUser(data);
-    }).catch(err => console.log(err));
+    api.getUserInfo()
+      .then((data) => setCurrentUser(data))
+      .catch(err => console.log(err));
   }, []);
 
   React.useEffect(() => {
-    api.getCards().then((data) => {
-      setCardList(data);
-    }).catch(err => console.log(err));
+    api.getCards()
+      .then((data) => setCardList(data))
+      .catch(err => console.log(err));
   }, []);
 
   function handleCardLike(card) {
     const isLiked = card.likes.some(like => like._id === currentUser._id);
-    api.toggleLike(card._id, isLiked).then((newCard) => {
-      setCardList((list) => list.map((oldCard) => oldCard._id === card._id ? newCard : oldCard));
-    });
+    api.toggleLike(card._id, isLiked)
+      .then((newCard) => setCardList((list) => list.map((oldCard) => oldCard._id === card._id ? newCard : oldCard)))
+      .catch(err => console.log(err));
   };
 
   function handleCardDelete(card) {
@@ -75,24 +75,30 @@ export default function App() {
   };
 
   function onUpdateUser(userInfo) {
-    api.editUserInfo(userInfo).then((data) => {
-      setCurrentUser(data);
-      closeAllPopups();
-    }).catch(err => console.log(err));
+    api.editUserInfo(userInfo)
+      .then((data) => {
+        setCurrentUser(data);
+        closeAllPopups();
+      })
+      .catch(err => console.log(err));
   };
 
   function onUpdateAvatar(avatar) {
-    api.editAvatar(avatar).then((data) => {
-      setCurrentUser(data);
-      closeAllPopups();
-    }).catch(err => console.log(err));
+    api.editAvatar(avatar)
+      .then((data) => {
+        setCurrentUser(data);
+        closeAllPopups();
+      })
+      .catch(err => console.log(err));
   };
 
   function onAddPlace(place) {
-    api.addCard(place).then((newCard) => {
-      setCardList([newCard, ...cardList]);
-      closeAllPopups();
-    }).catch(err => console.log(err));
+    api.addCard(place)
+      .then((newCard) => {
+        setCardList([newCard, ...cardList]);
+        closeAllPopups();
+      })
+      .catch(err => console.log(err));
   };
 
   return (
