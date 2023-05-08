@@ -63,8 +63,8 @@ export default function App() {
   function onUpdateUser(userInfo) {
     api.editUserInfo(userInfo).then((data) => {
       setCurrentUser(data);
+      closeAllPopups();
     }).catch(err => console.log(err));
-    closeAllPopups();
   };
 
   function onUpdateAvatar(avatar) {
