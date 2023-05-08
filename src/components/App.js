@@ -67,6 +67,13 @@ export default function App() {
     closeAllPopups();
   };
 
+  function onUpdateAvatar(avatar) {
+    api.editAvatar(avatar).then((data) => {
+      setCurrentUser(data);
+      closeAllPopups();
+    }).catch(err => console.log(err));
+  };
+
   return (
     <>
       <CurrentUserContext.Provider value={currentUser}>
@@ -84,7 +91,7 @@ export default function App() {
 
           <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={onUpdateUser} />
           <PopupNewPlace isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
-          <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} />
+          <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={onUpdateAvatar} />
           <PopupDeleteConfirmation />
           <ImagePopup card={selectedCard} onClose={closeAllPopups} />
 
