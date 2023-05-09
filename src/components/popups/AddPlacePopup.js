@@ -1,22 +1,14 @@
 import React from 'react';
 import PopupWithForm from './PopupWithForm';
+import { useForm } from '../../hooks/useForm';
 
 export default function AddPlacePopup(props) {
   const { isOpen, onClose, onAddPlace } = props;
-
-  const [newCard, setNewCard] = React.useState({ name: '', link: '' });
+  const { values, handleChange } = useForm({ name: '', link: '' });
 
   function handleSubmit(e) {
     e.preventDefault();
-    onAddPlace(newCard);
-  };
-
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setNewCard(state => ({
-      ...state,
-      [name]: value,
-    }));
+    onAddPlace(values);
   };
 
   return (
