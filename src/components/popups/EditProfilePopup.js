@@ -13,7 +13,7 @@ export default function EditProfilePopup(props) {
       ...state,
       ...currentUser,
     }));
-  }, [currentUser]);
+  }, [currentUser, isOpen]);
 
   function handleSubmit(e) {
     e.preventDefault();
