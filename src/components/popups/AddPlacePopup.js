@@ -11,6 +11,7 @@ export default function AddPlacePopup(props) {
     onAddPlace(values);
   };
 
+
   return (
     <PopupWithForm
       isOpen={isOpen}
@@ -24,11 +25,11 @@ export default function AddPlacePopup(props) {
       inactiveButton={false}
     >
       <label className="popup__label" htmlFor="inputPlaceName">
-        <input className="popup__input" id="inputPlaceName" onChange={handleChange} type="text" name="name" placeholder="Название" required minLength="2" maxLength="30" />
+        <input className="popup__input" id="inputPlaceName" value={values.name} onChange={handleChange} type="text" name="name" placeholder="Название" required minLength="2" maxLength="30" />
         <span className="popup__input-error inputPlaceName-error"></span>
       </label>
       <label className="popup__label" htmlFor="inputPlaceLink">
-        <input className="popup__input" id="inputPlaceLink" onChange={handleChange} type="url" name="link" placeholder="Ссылка на картинку" required pattern="https://.*" />
+        <input className="popup__input" id="inputPlaceLink" value={values.link} onChange={handleChange} type="url" name="link" placeholder="Ссылка на картинку" required pattern="https://.*" />
         <span className="popup__input-error inputPlaceLink-error"></span>
       </label>
     </PopupWithForm>
