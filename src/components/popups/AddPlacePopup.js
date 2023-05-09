@@ -4,11 +4,12 @@ import { useForm } from '../../hooks/useForm';
 
 export default function AddPlacePopup(props) {
   const { isOpen, onClose, onAddPlace, isLoading } = props;
-  const { values, handleChange } = useForm({ name: '', link: '' });
+  const { values, handleChange, setValues } = useForm({ name: '', link: '' });
 
   function handleSubmit(e) {
     e.preventDefault();
     onAddPlace(values);
+    setValues({ name: '', link: '' });
   };
 
 
