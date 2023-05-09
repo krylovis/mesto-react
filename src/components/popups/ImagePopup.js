@@ -1,7 +1,11 @@
+
+import usePopupClose from '../../hooks/usePopupClose';
+
 export default function ImagePopup(props) {
   const { card, onClose } = props;
   const { name, link } = card;
   const isData = name && link ? true : false;
+  usePopupClose(isData, onClose);
 
   return (
     <section className={`popup popup_type_place-photo ${isData ? "popup_opened" : ''}`}>
