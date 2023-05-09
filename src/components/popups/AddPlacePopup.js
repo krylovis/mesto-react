@@ -3,7 +3,7 @@ import PopupWithForm from './PopupWithForm';
 import { useForm } from '../../hooks/useForm';
 
 export default function AddPlacePopup(props) {
-  const { isOpen, onClose, onAddPlace } = props;
+  const { isOpen, onClose, onAddPlace, isLoading } = props;
   const { values, handleChange } = useForm({ name: '', link: '' });
 
   function handleSubmit(e) {
@@ -21,7 +21,7 @@ export default function AddPlacePopup(props) {
       popupTitle="Новое место"
       formName="newPlaceForm"
       ariaLabel="Создать новое место"
-      buttonText="Создать"
+      buttonText={isLoading ? "Сохранение..." : "Сохранить"}
       inactiveButton={false}
     >
       <label className="popup__label" htmlFor="inputPlaceName">

@@ -24,6 +24,7 @@ export default function App() {
   const [currentUser, setCurrentUser] = React.useState({});
   const [cardList, setCardList] = React.useState([]);
   const [cardForDelete, setCardForDelete] = React.useState('');
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const handleEditAvatarClick = () => setEditAvatarPopupOpen(true);
   const handleEditProfileClick = () => setEditProfilePopupOpen(true);
@@ -75,55 +76,59 @@ export default function App() {
   };
 
   function onUpdateUser(userInfo) {
+    setIsLoading(true);
     api.editUserInfo(userInfo)
       .then((data) => {
         setCurrentUser(data);
         closeAllPopups();
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
+      .finally(() => setIsLoading(false));
   };
 
   function onUpdateAvatar(avatar) {
+    setIsLoading(true);
     api.editAvatar(avatar)
       .then((data) => {
         setCurrentUser(data);
         closeAllPopups();
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
+      .finally(() => setIsLoading(false));
   };
 
   function onAddPlace(place) {
+    setIsLoading(true);
     api.addCard(place)
       .then((newCard) => {
         setCardList([newCard, ...cardList]);
         closeAllPopups();
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
+      .finally(() => setIsLoading(false));
   };
 
   return (
-    <>
-      <CurrentUserContext.Provider value={currentUser}>
-        <CardListContext.Provider value={cardList}>
-          <Header />
-          <Main
-            onEditProfile={handleEditProfileClick}
-            onEditAvatar={handleEditAvatarClick}
-            onAddPlace={handleAddPlaceClick}
-            onCardClick={handleCardClick}
-            onCardLike={handleCardLike}
-            onCardDelete={handleCardDelete}
-          />
-          <Footer />
+    <CurrentUserContext.Provider value={currentUser}>
+      <CardListContext.Provider value={cardList}>
+        <Header />
+        <Main
+          onEditProfile={handleEditProfileClick}
+          onEditAvatar={handleEditAvatarClick}
+          onAddPlace={handleAddPlaceClick}
+          onCardClick={handleCardClick}
+          onCardLike={handleCardLike}
+          onCardDelete={handleCardDelete}
+        />
+        <Footer />
 
-          <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={onUpdateUser} />
-          <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={onAddPlace} />
-          <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={onUpdateAvatar} />
-          <DeleteConfirmationPopup isOpen={isDelConfPopupOpen} onClose={closeAllPopups} onConfirmation={onConfirmation} />
-          <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+        <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={onUpdateUser} isLoading={isLoading} />
+        <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={onAddPlace} isLoading={isLoading} />
+        <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={onUpdateAvatar} isLoading={isLoading} />
+        <DeleteConfirmationPopup isOpen={isDelConfPopupOpen} onClose={closeAllPopups} onConfirmation={onConfirmation} />
+        <ImagePopup card={selectedCard} onClose={closeAllPopups} />
 
-        </CardListContext.Provider>
-      </CurrentUserContext.Provider>
-    </>
+      </CardListContext.Provider>
+    </CurrentUserContext.Provider>
   );
 }

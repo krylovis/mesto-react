@@ -4,7 +4,7 @@ import PopupWithForm from './PopupWithForm';
 
 export default function EditProfilePopup(props) {
   const currentUser = React.useContext(CurrentUserContext);
-  const { isOpen, onClose, onUpdateUser } = props;
+  const { isOpen, onClose, onUpdateUser, isLoading } = props;
 
   const [userInfo, setUserInfo] = React.useState({ name: '', about: '' });
 
@@ -37,7 +37,7 @@ export default function EditProfilePopup(props) {
       popupTitle="Редактировать профиль"
       formName="profileForm"
       ariaLabel="Сохранить данные"
-      buttonText="Сохранить"
+      buttonText={isLoading ? "Сохранение..." : "Сохранить"}
       inactiveButton={false}
     >
       <label className="popup__label" htmlFor="inputName">
