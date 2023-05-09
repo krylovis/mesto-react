@@ -9,6 +9,7 @@ export default function EditAvatarPopup(props) {
     e.preventDefault();
     const { value } = avatarRef.current;
     onUpdateAvatar({ avatar: value, });
+    avatarRef.current.value = '';
   };
 
   return (
