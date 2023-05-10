@@ -6,10 +6,13 @@ export default function AddPlacePopup(props) {
   const { isOpen, onClose, onAddPlace, isLoading } = props;
   const { values, handleChange, setValues } = useForm({ name: '', link: '' });
 
+  React.useEffect(() => {
+    setValues({ name: '', link: '' });
+  }, [setValues, isOpen]);
+
   function handleSubmit(e) {
     e.preventDefault();
     onAddPlace(values);
-    setValues({ name: '', link: '' });
   };
 
 
