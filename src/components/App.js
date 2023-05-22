@@ -22,8 +22,8 @@ export default function App() {
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
   const [isDelConfPopupOpen, setDelConfPopupOpen] = React.useState(false);
-
   const [selectedCard, setSelectedCard] = React.useState({ link: '', name: '' });
+
   const [currentUser, setCurrentUser] = React.useState({});
   const [cardList, setCardList] = React.useState([]);
   const [cardForDelete, setCardForDelete] = React.useState('');
@@ -131,11 +131,11 @@ export default function App() {
 
         {loggedIn && <Footer />}
 
-        <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={onUpdateUser} isLoading={isLoading} />
-        <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={onAddPlace} isLoading={isLoading} />
-        <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={onUpdateAvatar} isLoading={isLoading} />
-        <DeleteConfirmationPopup isOpen={isDelConfPopupOpen} onClose={closeAllPopups} onConfirmation={onConfirmation} />
-        <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+        {isEditProfilePopupOpen && <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={onUpdateUser} isLoading={isLoading} />}
+        {isAddPlacePopupOpen && <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={onAddPlace} isLoading={isLoading} />}
+        {isEditAvatarPopupOpen && <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={onUpdateAvatar} isLoading={isLoading} />}
+        {isDelConfPopupOpen && <DeleteConfirmationPopup isOpen={isDelConfPopupOpen} onClose={closeAllPopups} onConfirmation={onConfirmation} />}
+        {selectedCard.link && <ImagePopup card={selectedCard} onClose={closeAllPopups} />}
 
       </CardListContext.Provider>
     </CurrentUserContext.Provider>
