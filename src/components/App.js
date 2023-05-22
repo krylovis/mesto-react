@@ -29,6 +29,8 @@ export default function App() {
   const [cardForDelete, setCardForDelete] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
 
+  const [loggedIn, setLoggedIn] = React.useState(false);
+
   const handleEditAvatarClick = () => setEditAvatarPopupOpen(true);
   const handleEditProfileClick = () => setEditProfilePopupOpen(true);
   const handleAddPlaceClick = () => setAddPlacePopupOpen(true);
@@ -126,7 +128,8 @@ export default function App() {
           />} />
           <Route path="/sign-up" element={<Register />} />
         </Routes>
-        <Footer />
+
+        {loggedIn && <Footer />}
 
         <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={onUpdateUser} isLoading={isLoading} />
         <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={onAddPlace} isLoading={isLoading} />
