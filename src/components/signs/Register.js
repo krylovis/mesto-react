@@ -14,6 +14,7 @@ export default function Register() {
       ariaLabel="Зарегистрироваться"
       buttonText="Зарегистрироваться"
       inactiveButton={false}
+      isLink={true}
     >
       <label className="sign__label" htmlFor="inputRegisterEmail">
         <input className="sign__input" id="inputRegisterEmail" type="email" name="register-email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}" placeholder="Email" required minLength="2" maxLength="40" />

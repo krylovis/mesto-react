@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 export default function SignWithForm(props) {
-  const { signTitle, signName, ariaLabel, buttonText, children, onSubmit } = props;
+  const { signTitle, signName, ariaLabel, buttonText, isLink, children, onSubmit } = props;
 
   return (
     <main className="content">
@@ -14,10 +14,11 @@ export default function SignWithForm(props) {
             <button className="button sign__submit-button" type="submit" aria-label={ariaLabel}>{buttonText}</button>
           </form>
 
-          <div className="sign__enter">
-            <p className="sign__text">Уже зарегистрированы?&nbsp;</p>
-            <Link className="link sign__link" to="/sign-in">Войти</Link>
-          </div>
+          {isLink &&
+            <div className="sign__enter">
+              <p className="sign__text">Уже зарегистрированы?&nbsp;</p>
+              <Link className="link sign__link" to="/sign-in">Войти</Link>
+            </div>}
         </div>
       </section>
     </main>
