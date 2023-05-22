@@ -74,14 +74,14 @@
 @import './blocks/footer/footer.css';
 @import './blocks/footer/__text/footer__text.css';
 
-/* --------------- register --------------- */
-@import './blocks/register/register.css';
-@import './blocks/register/__title/register__title.css';
-@import './blocks/register/__form/register__form.css';
-@import './blocks/register/__container/register__container.css';
-@import './blocks/register/__label/register__label.css';
-@import './blocks/register/__input/register__input.css';
-@import './blocks/register/__submit-button/register__submit-button.css';
-@import './blocks/register/__enter/register__enter.css';
-@import './blocks/register/__text/register__text.css';
-@import './blocks/register/__link/register__link.css';
+/* --------------- sign --------------- */
+@import './blocks/sign/sign.css';
+@import './blocks/sign/__title/sign__title.css';
+@import './blocks/sign/__form/sign__form.css';
+@import './blocks/sign/__container/sign__container.css';
+@import './blocks/sign/__label/sign__label.css';
+@import './blocks/sign/__input/sign__input.css';
+@import './blocks/sign/__submit-button/sign__submit-button.css';
+@import './blocks/sign/__enter/sign__enter.css';
+@import './blocks/sign/__text/sign__text.css';
+@import './blocks/sign/__link/sign__link.css';
