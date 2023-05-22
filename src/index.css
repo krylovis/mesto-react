@@ -66,3 +66,7 @@
 /* --------------- footer --------------- */
 @import './blocks/footer/footer.css';
 @import './blocks/footer/__text/footer__text.css';
+
+/* --------------- register --------------- */
+@import './blocks/register/register.css';
+@import './blocks/register/__title/register__title.css';

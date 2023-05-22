@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { api } from '../utils/Api';
 
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
@@ -7,6 +8,8 @@ import { CardListContext } from '../contexts/CardListContext';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
+
+import Register from './Register';
 
 import AddPlacePopup from './popups/AddPlacePopup';
 import EditProfilePopup from './popups/EditProfilePopup';
@@ -112,14 +115,17 @@ export default function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <CardListContext.Provider value={cardList}>
         <Header />
-        <Main
-          onEditProfile={handleEditProfileClick}
-          onEditAvatar={handleEditAvatarClick}
-          onAddPlace={handleAddPlaceClick}
-          onCardClick={handleCardClick}
-          onCardLike={handleCardLike}
-          onCardDelete={handleCardDelete}
-        />
+        <Routes>
+          <Route path="/" element={<Main
+            onEditProfile={handleEditProfileClick}
+            onEditAvatar={handleEditAvatarClick}
+            onAddPlace={handleAddPlaceClick}
+            onCardClick={handleCardClick}
+            onCardLike={handleCardLike}
+            onCardDelete={handleCardDelete}
+          />} />
+          <Route path="/sign-up" element={<Register />} />
+        </Routes>
         <Footer />
 
         <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={onUpdateUser} isLoading={isLoading} />
