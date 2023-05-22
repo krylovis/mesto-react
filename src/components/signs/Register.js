@@ -13,7 +13,6 @@ export default function Register() {
       signName="register"
       ariaLabel="Зарегистрироваться"
       buttonText="Зарегистрироваться"
-      inactiveButton={false}
       isLink={true}
     >
       <label className="sign__label" htmlFor="inputRegisterEmail">
