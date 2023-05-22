@@ -10,6 +10,7 @@ import Main from './Main';
 import Footer from './Footer';
 
 import Register from './signs/Register';
+import Login from './signs/Login';
 
 import AddPlacePopup from './popups/AddPlacePopup';
 import EditProfilePopup from './popups/EditProfilePopup';
@@ -127,6 +128,7 @@ export default function App() {
             onCardDelete={handleCardDelete}
           />} />
           <Route path="/sign-up" element={<Register />} />
+          <Route path="/sign-in" element={<Login />} />
         </Routes>
 
         {loggedIn && <Footer />}
