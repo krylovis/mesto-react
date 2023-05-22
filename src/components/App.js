@@ -9,7 +9,7 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 
-import Register from './Register';
+import Register from './signs/Register';
 
 import AddPlacePopup from './popups/AddPlacePopup';
 import EditProfilePopup from './popups/EditProfilePopup';
