@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { api } from '../utils/Api';
 
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
@@ -10,6 +10,7 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 
+import { tokenVerification } from '../utils/Auth';
 import Register from './signs/Register';
 import Login from './signs/Login';
 
@@ -27,6 +28,7 @@ export default function App() {
   const [selectedCard, setSelectedCard] = React.useState({ link: '', name: '' });
 
   const [currentUser, setCurrentUser] = React.useState({});
+  const [userEmail, setUserEmail] = React.useState(null);
   const [cardList, setCardList] = React.useState([]);
   const [cardForDelete, setCardForDelete] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
@@ -48,6 +50,8 @@ export default function App() {
     setSelectedCard({ link: '', name: '' });
   };
 
+  const navigate = useNavigate();
+
   React.useEffect(() => {
     api.getUserInfo()
       .then((data) => setCurrentUser(data))
@@ -59,6 +63,23 @@ export default function App() {
       .then((data) => setCardList(data))
       .catch(err => console.log(err));
   }, []);
+
+  React.useEffect(() => {
+    handleTokenCheck();
+  }, []);
+
+  function handleTokenCheck() {
+    const token = localStorage.getItem('mesto-react-token');
+    if (token) {
+      tokenVerification(token)
+        .then(({ data }) => {
+          setUserEmail(data.email);
+          setLoggedIn(true);
+          navigate('/', { replace: true });
+        })
+        .catch(err => console.log(err));
+    }
+  };
 
   function handleCardLike(card) {
     const isLiked = card.likes.some(like => like._id === currentUser._id);
@@ -119,7 +140,7 @@ export default function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <CardListContext.Provider value={cardList}>
-        <Header />
+        <Header userEmail={userEmail} />
         <Routes>
           <Route
             path="/"

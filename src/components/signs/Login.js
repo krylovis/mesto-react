@@ -13,7 +13,7 @@ export default function Login(props) {
     console.log('Login');
     authorize(values)
       .then((data) => {
-        console.log('data', data);
+        localStorage.setItem('mesto-react-token', data.token);
         handleSetLoggedIn();
         navigate('/', { replace: true });
       })
