@@ -1,9 +1,23 @@
 import SignWithForm from './SignWithForm';
+import { authorize } from '../../utils/Auth';
+import { useNavigate } from 'react-router-dom';
+import { useForm } from '../../hooks/useForm';
 
-export default function Login() {
+export default function Login(props) {
+  const { handleSetLoggedIn } = props;
+  const { values, handleChange } = useForm({ email: '', password: '' });
+  const navigate = useNavigate();
+
   function handleSubmit(e) {
     e.preventDefault();
     console.log('Login');
+    authorize(values)
+      .then((data) => {
+        console.log('data', data);
+        handleSetLoggedIn();
+        navigate('/', { replace: true });
+      })
+      .catch(err => console.log(err));
   };
 
   return (
@@ -15,12 +29,33 @@ export default function Login() {
       buttonText="Войти"
     >
       <label className="sign__label" htmlFor="inputLoginEmail">
-        <input className="sign__input" id="inputLoginEmail" type="email" name="login-email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}" placeholder="Email" required minLength="2" maxLength="40" />
+        <input
+          className="sign__input"
+          id="inputLoginEmail"
+          placeholder="Email"
+          type="email"
+          name="email"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}"
+          value={values.email}
+          onChange={handleChange}
+          required minLength="2"
+          maxLength="40"
+        />
         <span className="sign__input-error inputLoginEmail-error"></span>
       </label>
 
       <label className="sign__label" htmlFor="inputLoginPassword">
-        <input className="sign__input" id="inputLoginPassword" type="password" name="login-password" placeholder="Пароль" required minLength="6" maxLength="200" />
+        <input
+          className="sign__input"
+          id="inputLoginPassword"
+          placeholder="Пароль"
+          type="password"
+          name="password"
+          value={values.password}
+          onChange={handleChange}
+          required minLength="6"
+          maxLength="200"
+        />
         <span className="sign__input-error inputLoginPassword-error"></span>
       </label>
     </SignWithForm>

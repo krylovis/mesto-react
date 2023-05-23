@@ -32,6 +32,7 @@ export default function App() {
   const [isLoading, setIsLoading] = React.useState(false);
 
   const [loggedIn, setLoggedIn] = React.useState(false);
+  const handleSetLoggedIn = () => setLoggedIn(true);
 
   const handleEditAvatarClick = () => setEditAvatarPopupOpen(true);
   const handleEditProfileClick = () => setEditProfilePopupOpen(true);
@@ -135,7 +136,7 @@ export default function App() {
                 />
               )} />} />
           <Route path="/sign-up" element={<Register />} />
-          <Route path="/sign-in" element={<Login />} />
+          <Route path="/sign-in" element={<Login handleSetLoggedIn={handleSetLoggedIn} />} />
         </Routes>
 
         {loggedIn && <Footer />}
