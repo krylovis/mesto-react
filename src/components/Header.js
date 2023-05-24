@@ -1,13 +1,19 @@
 import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../images/logo.svg';
 
 export default function Header(props) {
   const { userEmail } = props;
   const [isOpen, setIsOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const location = useLocation();
   const { pathname } = location;
+
+  const logOut = () => {
+    localStorage.removeItem('mesto-react-token');
+    navigate('/sign-in');
+  };
 
   React.useEffect(() => {
     window.addEventListener('resize', () => {
@@ -26,7 +32,7 @@ export default function Header(props) {
         <div className='header__login-container'>
           <nav className={linksContainerClassName}>
             {pathname === "/" && <span className="header__login">{userEmail}</span>}
-            {pathname === "/" && <NavLink className="link header__link header__link_out" to="/sign-in">Выйти</NavLink>}
+            {pathname === "/" && <button className="button header__out-button">Выйти</button>}
           </nav>
         </div>
       }
@@ -41,7 +47,7 @@ export default function Header(props) {
             {pathname === "/sign-up" && <NavLink className="link header__link" to="/sign-in">Войти</NavLink>}
             {pathname === "/sign-in" && <NavLink className="link header__link" to="/sign-up">Регистрация</NavLink>}
             {pathname === "/" && <span className="header__login">{userEmail}</span>}
-            {pathname === "/" && <NavLink className="link header__link header__link_out" to="/sign-in">Выйти</NavLink>}
+            {pathname === "/" && <button className="button header__out-button" onClick={logOut}>Выйти</button>}
           </nav>
         }
 

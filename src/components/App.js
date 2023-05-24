@@ -66,16 +66,20 @@ export default function App() {
 
   React.useEffect(() => {
     handleTokenCheck();
-  }, []);
+  }, [loggedIn]);
 
   function handleTokenCheck() {
     const token = localStorage.getItem('mesto-react-token');
     if (token) {
       tokenVerification(token)
         .then(({ data }) => {
-          setUserEmail(data.email);
-          setLoggedIn(true);
-          navigate('/', { replace: true });
+          if (data) {
+            setUserEmail(data.email);
+            setLoggedIn(true);
+            navigate('/');
+          } else {
+            setLoggedIn(true);
+          }
         })
         .catch(err => console.log(err));
     }

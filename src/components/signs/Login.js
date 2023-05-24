@@ -10,12 +10,11 @@ export default function Login(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log('Login');
     authorize(values)
       .then((data) => {
         localStorage.setItem('mesto-react-token', data.token);
         handleSetLoggedIn();
-        navigate('/', { replace: true });
+        navigate('/');
       })
       .catch(err => console.log(err));
   };
