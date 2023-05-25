@@ -3,3 +3,9 @@
   flex-direction: column;
   padding-top: 45px;
 }
+
+@media screen and (max-width: 420px) {
+  .sign__form {
+    padding-top: 30px;
+  }
+}

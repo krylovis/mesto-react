@@ -5,3 +5,9 @@
   text-align: center;
   line-height: 29px;
 }
+
+@media screen and (max-width: 420px) {
+  .sign__title {
+    font-size: 20px;
+  }
+}

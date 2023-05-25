@@ -10,3 +10,10 @@
   border: none;
   border-radius: 2px;
 }
+
+@media screen and (max-width: 420px) {
+  .sign__submit-button {
+    font-size: 16px;
+    height: 46px;
+  }
+}
