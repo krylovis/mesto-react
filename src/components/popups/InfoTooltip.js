@@ -11,6 +11,8 @@ export default function InfoTooltip(props) {
   const tooltipImg = isFulfilled ? fulfilled : rejected;
   const tooltipText = isFulfilled ? fulfilledText : rejectedText;
 
+  setTimeout(() => onClose(), 3000);
+
   return (
     <section className={`popup popup_type_info-tooltip ${isOpen ? "popup_opened" : ''}`}>
       <div className="popup__container popup__container_type_info-tooltip">
