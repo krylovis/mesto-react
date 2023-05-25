@@ -3,7 +3,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../images/logo.svg';
 
 export default function Header(props) {
-  const { userEmail } = props;
+  const { userEmail, handleSetLoggedOut } = props;
   const [isOpen, setIsOpen] = React.useState(false);
   const navigate = useNavigate();
 
@@ -12,6 +12,7 @@ export default function Header(props) {
 
   const logOut = () => {
     localStorage.removeItem('mesto-react-token');
+    handleSetLoggedOut();
     navigate('/sign-in');
   };
 

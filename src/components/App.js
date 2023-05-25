@@ -35,6 +35,7 @@ export default function App() {
 
   const [loggedIn, setLoggedIn] = React.useState(false);
   const handleSetLoggedIn = () => setLoggedIn(true);
+  const handleSetLoggedOut = () => setLoggedIn(false);
 
   const handleEditAvatarClick = () => setEditAvatarPopupOpen(true);
   const handleEditProfileClick = () => setEditProfilePopupOpen(true);
@@ -144,7 +145,7 @@ export default function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <CardListContext.Provider value={cardList}>
-        <Header userEmail={userEmail} />
+        <Header userEmail={userEmail} handleSetLoggedOut={handleSetLoggedOut} />
         <Routes>
           <Route
             path="/"
