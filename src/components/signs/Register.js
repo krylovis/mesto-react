@@ -3,7 +3,8 @@ import { useForm } from '../../hooks/useForm';
 import { register } from '../../utils/Auth';
 import { useNavigate } from 'react-router-dom';
 
-export default function Register() {
+export default function Register(props) {
+  const { handleTooltipOpen } = props;
   const { values, handleChange } = useForm({ email: '', password: '' });
   const navigate = useNavigate();
 
@@ -11,10 +12,13 @@ export default function Register() {
     e.preventDefault();
     register(values)
       .then((data) => {
-        console.log('data', data);
+        handleTooltipOpen(true);
         navigate('/sign-in', { replace: true });
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        handleTooltipOpen(false);
+        console.log(err)
+      });
   };
 
   return (

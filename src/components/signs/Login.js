@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 
 export default function Login(props) {
-  const { handleSetLoggedIn } = props;
+  const { handleSetLoggedIn, handleTooltipOpen } = props;
   const { values, handleChange } = useForm({ email: '', password: '' });
   const navigate = useNavigate();
 
@@ -16,7 +16,10 @@ export default function Login(props) {
         handleSetLoggedIn();
         navigate('/');
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        handleTooltipOpen(false);
+        console.log(err)
+      });
   };
 
   return (

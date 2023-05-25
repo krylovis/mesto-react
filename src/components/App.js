@@ -27,7 +27,9 @@ export default function App() {
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
   const [isDelConfPopupOpen, setDelConfPopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({ link: '', name: '' });
-  const [isInfoTooltipOpen, setInfoTooltipOpen] = React.useState(true);
+
+  const [isInfoTooltipOpen, setInfoTooltipOpen] = React.useState(false);
+  const [isFulfilled, setFulfilled] = React.useState(null);
 
   const [currentUser, setCurrentUser] = React.useState({});
   const [userEmail, setUserEmail] = React.useState(null);
@@ -87,6 +89,11 @@ export default function App() {
         })
         .catch(err => console.log(err));
     }
+  };
+
+  function handleTooltipOpen(result) {
+    setInfoTooltipOpen(true);
+    setFulfilled(result);
   };
 
   function handleCardLike(card) {
@@ -164,8 +171,8 @@ export default function App() {
                   onCardDelete={handleCardDelete}
                 />
               )} />} />
-          <Route path="/sign-up" element={<Register />} />
-          <Route path="/sign-in" element={<Login handleSetLoggedIn={handleSetLoggedIn} />} />
+          <Route path="/sign-up" element={<Register handleTooltipOpen={handleTooltipOpen} />} />
+          <Route path="/sign-in" element={<Login handleSetLoggedIn={handleSetLoggedIn} handleTooltipOpen={handleTooltipOpen} />} />
         </Routes>
 
         {loggedIn && <Footer />}
@@ -175,7 +182,7 @@ export default function App() {
         {isEditAvatarPopupOpen && <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={onUpdateAvatar} isLoading={isLoading} />}
         {isDelConfPopupOpen && <DeleteConfirmationPopup isOpen={isDelConfPopupOpen} onClose={closeAllPopups} onConfirmation={onConfirmation} />}
         {selectedCard.link && <ImagePopup card={selectedCard} onClose={closeAllPopups} />}
-        {isInfoTooltipOpen && <InfoTooltip isOpen={isInfoTooltipOpen} onClose={closeAllPopups} />}
+        {isInfoTooltipOpen && <InfoTooltip isOpen={isInfoTooltipOpen} onClose={closeAllPopups} isFulfilled={isFulfilled} />}
 
       </CardListContext.Provider>
     </CurrentUserContext.Provider>
