@@ -13,7 +13,7 @@ export default function Register(props) {
     register(values)
       .then((data) => {
         handleTooltipOpen(true);
-        navigate('/sign-in', { replace: true });
+        navigate('/sign-in');
       })
       .catch(err => {
         handleTooltipOpen(false);
