@@ -5,9 +5,7 @@ export default function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   const currentUser = React.useContext(CurrentUserContext);
   const isOwn = card.owner._id === currentUser._id;
   const isLiked = card.likes.some(i => i._id === currentUser._id);
-  const likeButtonClassName = (
-    `button element__button element__like ${isLiked && 'element__like_active'}`
-  );
+  const likeButtonClassName = `button element__button element__like ${isLiked && 'element__like_active'}`;
   const { link, name, likes } = card;
   const counter = likes.length;
 
