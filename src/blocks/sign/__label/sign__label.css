@@ -6,3 +6,9 @@
   padding-bottom: 216px;
   position: relative;
 }
+
+@media screen and (max-width: 420px) {
+  .sign__label {
+    padding-bottom: 173px;
+  }
+}
