@@ -79,7 +79,7 @@ export default function App() {
             setLoggedIn(true);
             navigate('/');
           } else {
-            setLoggedIn(true);
+            setLoggedIn(false);
           }
         })
         .catch(err => console.log(err));
