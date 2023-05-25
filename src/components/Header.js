@@ -33,7 +33,7 @@ export default function Header(props) {
         <div className='header__login-container'>
           <nav className={linksContainerClassName}>
             {pathname === "/" && <span className="header__login">{userEmail}</span>}
-            {pathname === "/" && <button className="button header__out-button">Выйти</button>}
+            {pathname === "/" && <button className="button header__out-button" onClick={logOut}>Выйти</button>}
           </nav>
         </div>
       }
@@ -47,7 +47,7 @@ export default function Header(props) {
           <nav className={linksContainerClassName}>
             {pathname === "/sign-up" && <NavLink className="link header__link" to="/sign-in">Войти</NavLink>}
             {pathname === "/sign-in" && <NavLink className="link header__link" to="/sign-up">Регистрация</NavLink>}
-            {pathname === "/" && <span className="header__login">{userEmail}</span>}
+            {pathname === "/" && <span className="header__login" title={userEmail}>{userEmail}</span>}
             {pathname === "/" && <button className="button header__out-button" onClick={logOut}>Выйти</button>}
           </nav>
         }
