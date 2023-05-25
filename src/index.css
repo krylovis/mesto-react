@@ -49,6 +49,12 @@
 @import './blocks/popup/__photo.css/popup__photo.css';
 @import './blocks/popup/__figcaption/popup__figcaption.css';
 
+/* --------------- popup - tooltip --------------- */
+@import './blocks/popup/__container/_type_info-tooltip/popup__container_type_info-tooltip.css';
+@import './blocks/popup/__tooltip-text/popup__tooltip-text.css';
+@import './blocks/popup/__tooltip-img/popup__tooltip-img.css';
+
+
 /* --------------- profile --------------- */
 @import './blocks/profile/profile.css';
 @import './blocks/profile/__edit-avatar-button/profile__edit-avatar-button.css';

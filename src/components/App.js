@@ -19,6 +19,7 @@ import EditProfilePopup from './popups/EditProfilePopup';
 import EditAvatarPopup from './popups/EditAvatarPopup';
 import DeleteConfirmationPopup from './popups/DeleteConfirmationPopup';
 import ImagePopup from './popups/ImagePopup';
+import InfoTooltip from './popups/InfoTooltip';
 
 export default function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
@@ -26,6 +27,7 @@ export default function App() {
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
   const [isDelConfPopupOpen, setDelConfPopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({ link: '', name: '' });
+  const [isInfoTooltipOpen, setInfoTooltipOpen] = React.useState(true);
 
   const [currentUser, setCurrentUser] = React.useState({});
   const [userEmail, setUserEmail] = React.useState(null);
@@ -49,6 +51,7 @@ export default function App() {
     setAddPlacePopupOpen(false);
     setDelConfPopupOpen(false);
     setSelectedCard({ link: '', name: '' });
+    setInfoTooltipOpen(false);
   };
 
   const navigate = useNavigate();
@@ -172,6 +175,7 @@ export default function App() {
         {isEditAvatarPopupOpen && <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={onUpdateAvatar} isLoading={isLoading} />}
         {isDelConfPopupOpen && <DeleteConfirmationPopup isOpen={isDelConfPopupOpen} onClose={closeAllPopups} onConfirmation={onConfirmation} />}
         {selectedCard.link && <ImagePopup card={selectedCard} onClose={closeAllPopups} />}
+        {isInfoTooltipOpen && <InfoTooltip isOpen={isInfoTooltipOpen} onClose={closeAllPopups} />}
 
       </CardListContext.Provider>
     </CurrentUserContext.Provider>
