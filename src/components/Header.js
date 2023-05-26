@@ -3,7 +3,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../images/logo.svg';
 
 export default function Header(props) {
-  const { userEmail, handleSetLoggedOut } = props;
+  const { userEmail, handleSetLoggedOut, loggedIn } = props;
   const [isOpen, setIsOpen] = React.useState(false);
   const navigate = useNavigate();
 
@@ -14,6 +14,7 @@ export default function Header(props) {
     localStorage.removeItem('mesto-react-token');
     handleSetLoggedOut();
     navigate('/sign-in');
+    setIsOpen(false);
   };
 
   React.useEffect(() => {
@@ -29,10 +30,10 @@ export default function Header(props) {
 
   return (
     <header className="header">
-      {isOpen &&
+      {(isOpen && loggedIn) &&
         <div className='header__login-container'>
           <nav className={linksContainerClassName}>
-            {pathname === "/" && <span className="header__login">{userEmail}</span>}
+            {pathname === "/" && <span className="header__login" title={userEmail}>{userEmail}</span>}
             {pathname === "/" && <button className="button header__out-button" onClick={logOut}>Выйти</button>}
           </nav>
         </div>
@@ -43,7 +44,7 @@ export default function Header(props) {
           <img src={logo} alt="Логотип: Место" className="header__logo" />
         </NavLink>
 
-        {!isOpen &&
+        {(!isOpen && !loggedIn) &&
           <nav className={linksContainerClassName}>
             {pathname === "/sign-up" && <NavLink className="link header__link" to="/sign-in">Войти</NavLink>}
             {pathname === "/sign-in" && <NavLink className="link header__link" to="/sign-up">Регистрация</NavLink>}
@@ -52,13 +53,13 @@ export default function Header(props) {
           </nav>
         }
 
-        <button
+        {loggedIn && <button
           className={menuButtonClassName}
           type="button"
           title={isOpen ? 'Закрыть меню' : 'Открыть меню'}
           aria-label="Кнопка меню"
           onClick={toggleMenu}
-        />
+        />}
       </div>
     </header >
   );

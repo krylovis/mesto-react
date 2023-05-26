@@ -3,9 +3,3 @@
   gap: 24px;
   padding-top: 8px;
 }
-
-@media screen and (max-width: 420px) {
-  .header__links-container {
-    display: none;
-  }
-}
